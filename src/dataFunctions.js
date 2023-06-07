@@ -1,5 +1,5 @@
 import { db } from './firebase';
-import {collection, addDoc} from './firebase';
+import {collection, addDoc, getDoc, doc, getDocs} from './firebase';
 
 const nodesCollection = collection(db, 'nodes');
 
@@ -44,6 +44,39 @@ export const createNode = async () => {
       console.error('노드 생성에 실패하였습니다.', error);
     }
   };
+
+// 노드 가져오기 함수
+export const getNode = async (nodeId) => {
+  try {
+    // Firestore 컬렉션에서 해당 노드 가져오기
+    const docRef = doc(nodesCollection, nodeId);
+    const docSnapshot = await getDoc(docRef);
+    
+    if (docSnapshot.exists()) {
+      const nodeData = docSnapshot.data();
+      console.log('노드 내용:', nodeData.content);
+    } else {
+      console.log('해당 노드를 찾을 수 없습니다.');
+    }
+  } catch (error) {
+    console.error('노드 가져오기에 실패하였습니다.', error);
+  }
+};
+
+// Firebase에서 모든 노드 정보 출력하기
+export const printAllNodes = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "nodes"));
+    
+    querySnapshot.forEach((doc) => {
+      const nodeData = doc.data();
+      console.log('노드 정보:', nodeData);
+    });
+  } catch (error) {
+    console.error('노드 정보 가져오기에 실패하였습니다.', error);
+  }
+};
+
 
 export const deleteNode = async (nodes, documentId) => {
     try {

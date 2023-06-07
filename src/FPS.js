@@ -1,5 +1,5 @@
 import {React} from "react"; //React를 임포트한다. React컴포넌트를 정의하기 위해 필요한 도구
-import {createNode} from "./dataFunctions";  //노드 관리에 관련된 함수
+import {createNode, printAllNodes} from "./dataFunctions";  //노드 관리에 관련된 함수
 import { login, logout } from "./Authentication";
 import { useNavigate } from 'react-router-dom';
 
@@ -24,6 +24,7 @@ const FPS = () => {
   return (
     <div>
       <button onClick={createNode}>노드 생성</button>
+      <button onClick={printAllNodes}>노드 내용 출력</button>
       <button onClick={login}>로그인</button>
       <button onClick={logoutHandler}>로그아웃</button>
       <button onClick={handlespace}>main으로 이동</button>
