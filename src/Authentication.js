@@ -10,6 +10,12 @@ export const login = async () => {
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
+
+
+        console.log('user :', result.user)
+        console.log('tocken :', result.credential.accessToken)
+
+
         console.log("구글 로그인 성공");
       })
       .catch((error) => {
@@ -17,7 +23,6 @@ export const login = async () => {
         // 소셜 로그인 실패 시 실행되는 코드
         console.log(error);
       });
-      
   };
 
 //로그아웃
