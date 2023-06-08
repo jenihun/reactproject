@@ -1,7 +1,6 @@
 import { db } from './firebase';
-import {collection, addDoc, getDoc, doc, getDocs, deleteDoc} from './firebase';
+import {collection, addDoc, doc, getDocs, deleteDoc} from './firebase';
 
-export const nodesCollection = collection(db, '노드');
 
 //노드 수정 함수
 export const updateNode = async (collectionName, documentId, newData) => {
@@ -24,7 +23,7 @@ export const createNode = async () => {
       content: content,
     };
 
-    const docRef = await addDoc(nodesCollection, nodeData);
+    const docRef = await addDoc(collection(db, '노드'), nodeData);
     const nodeId = docRef.id;
     console.log('노드가 생성되었습니다.', nodeId);
   } catch (error) {
@@ -36,7 +35,7 @@ export const createNode = async () => {
 export const deleteNode = async (nodeId) => {
     try {
       // Firestore 컬렉션에서 노드 삭제
-      await deleteDoc(doc(nodesCollection, nodeId));
+      await deleteDoc(doc(collection(db, '노드'), nodeId));
       console.log('노드가 삭제되었습니다.', nodeId);
     } catch (error) {
       console.error('노드 삭제에 실패하였습니다.', error);
@@ -45,9 +44,9 @@ export const deleteNode = async (nodeId) => {
 
 
 //모든 노드 정보 출력(콘솔)
-export const printAllNodes = async () => {
+export const printAllNodesConsole = async () => {
   try {
-    const querySnapshot = await getDocs(nodesCollection);
+    const querySnapshot = await getDocs(collection(db, '노드'));
     const sortedNodes = querySnapshot.docs
       .map((doc) => doc.data())
       .sort((a, b) => a.title.localeCompare(b.title));
@@ -59,3 +58,29 @@ export const printAllNodes = async () => {
     console.error('노드 정보 가져오기에 실패하였습니다.', error);
   }
 };
+
+//모든 노드 정보 출력(front)
+export const printAllNodes = async (setNodes) => {
+
+  try {
+    const querySnapshot = await getDocs(collection(db, '노드'));
+    console.log(querySnapshot);
+    const sortedNodes = querySnapshot.docs
+      .map((doc) => {
+        return {...doc.data(), id: doc.id}
+      })
+      .sort((a, b) => a.title.localeCompare(b.title));
+    setNodes(sortedNodes);
+  } catch (error) {
+    console.error('노드 정보 가져오기에 실패하였습니다.', error);
+  }
+
+};
+
+/*
+export const clearAllNodes = async (nodes) => {
+  setNodes([])
+};
+*/
+
+
