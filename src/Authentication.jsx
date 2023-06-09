@@ -1,5 +1,7 @@
-import {GoogleAuthProvider, auth, firebaseConfig,signInWithPopup, initializeApp,signOut} from './firebase';
+import {db, GoogleAuthProvider, auth, firebaseConfig,signInWithPopup, 
+        setDoc,doc,initializeApp,signOut, collection} from './firebase';
 import { useNavigate } from 'react-router-dom';
+import { createContext, useContext, useState } from 'react';
 
 //로그인
 export const login = async () => {
@@ -14,6 +16,19 @@ export const login = async () => {
 
         console.log('user :', result.user)
         console.log("구글 로그인 성공");
+
+        // Firestore의 users collection에 문서 생성
+        const userRef = doc(db, "users", result.user.uid);
+        setDoc(userRef, {
+          name: result.user.displayName,
+          email: result.user.email,
+          phoneNumber : result.user.phoneNumber,
+        // 추가적인 필드 정보 저장 가능
+      });
+        const plansRef = collection(userRef,"plans");
+        setDoc(plansRef, {
+
+        });
       })
       .catch((error) => {
         const credential = GoogleAuthProvider.credentialFromError(error);
@@ -44,3 +59,31 @@ export const AuthStateChange = () => {
     }
   });
 };
+
+
+// Firebase에서 가져온 User 객체를 저장하는 Context 생성
+export const UserContext = createContext(null);
+
+// UserContext를 사용하여 uid 값을 가져오는 훅 생성
+export const useUser = () => {
+  const { uid, setUid } = useContext(UserContext);
+  return { uid, setUid };
+};
+
+export const Profile = async () =>{
+  const {uid} = useUser();
+  return uid;
+}
+
+/*
+// UserContext를 사용하여 로그인한 사용자의 uid 값을 전역 상태로 관리하는 컴포넌트 생성
+export const UserProvider = ({ children }) => {
+  const [uid, setUid] = useState(null);
+
+  return (
+    <UserContext.Provider value={{ uid, setUid }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+*/

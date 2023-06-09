@@ -1,7 +1,8 @@
 import {React,  useState, useEffect }from 'react';
-import { useNavigate } from 'react-router-dom';
+import './mainPrint.css'
 import Modal from 'react-modal'
 import DirectedGraph from './graphFunction.jsx';
+import { createNode } from './dataFunctions.jsx';
 
 Modal.setAppElement('#root');
 
@@ -107,7 +108,7 @@ function Comp({ data, onClick }) {
   };
 
   useEffect(() => {
-    const calculateDaysRemaining = () => {
+      const calculateDaysRemaining = () => {
       const endDate = new Date(currentGoal.endDate);
       const today = new Date();
       const timeDiff = endDate.getTime() - today.getTime();
@@ -126,7 +127,10 @@ function Comp({ data, onClick }) {
     setShowGoalInfo(!showGoalInfo);
   };
 
+  const [cont1, setCont1] = useState([])
+
   return (
+
     <div className='cont1'>
       <div
         className='add'
@@ -139,14 +143,17 @@ function Comp({ data, onClick }) {
         <button onClick={openModal}>목표 입력</button>
         <button onClick={toggleGoalInfo}>목표 확인</button> {/* Added "Goal Check" button */}
         <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel='목표 입력'>
+
+          
           <form>
             <div className="form-group">
               <label htmlFor="goalName">목표명</label>
-              <input type="text" id="goalName" value={currentGoal.goal} onChange={inputGoal} placeholder="목표명" />
+              <input type="text" id="goalName" name="goaltitle" value={currentGoal.goal} onChange={inputGoal} placeholder="목표명" />
             </div>
             <div className="form-group">
               <label htmlFor="achievementRate">목표 달성률(%)</label>
               <input
+                name="goalAchieverate"
                 type="number"
                 id="achievementRate"
                 value={currentGoal.achievementRate}
@@ -159,6 +166,7 @@ function Comp({ data, onClick }) {
             <div className="form-group">
               <label htmlFor="startDate">시작일</label>
               <input
+                name="startday"
                 type="date"
                 id="startDate"
                 value={currentGoal.startDate}
@@ -170,6 +178,7 @@ function Comp({ data, onClick }) {
             <div className="form-group">
               <label htmlFor="endDate">마감일</label>
               <input
+                name="endday"
                 type="date"
                 id="endDate"
                 value={currentGoal.endDate}
@@ -178,10 +187,11 @@ function Comp({ data, onClick }) {
                 placeholder="마감일"
               />
             </div>
-            <button className="submit-button" disabled={!isFormValid} onClick={handleSubmit}>
+            <button className="submit-button" disabled={!isFormValid} onClick={() =>{handleSubmit(); createNode(setCont1);}}>
               Submit
             </button>
           </form>
+
         </Modal>
         {showGoalInfo && ( // Display goal information only if the "Goal Check" button is clicked
           <div>
@@ -274,7 +284,7 @@ function Plan(graph) {
 
 // const graph = new DirectedGraph();
 
-function mainPageRender(){
+const MainPrint = function MainPageRender(){
   const [plans, setPlan] = useState([]); //계획 관리 useState, {id:그래프(계획) 객체}
   return (
     <div>
@@ -291,4 +301,4 @@ function mainPageRender(){
   );
 }
 
-export default mainPageRender;
+export default MainPrint;

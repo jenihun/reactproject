@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut} from 'firebase/auth';
-import { getFirestore, collection , addDoc, getDoc,getDocs ,doc, deleteDoc } from 'firebase/firestore';
+import { getFirestore, collection , addDoc, getDoc,getDocs ,doc, deleteDoc,setDoc } from 'firebase/firestore';
 
 // Firebase SDK 설정 정보
 export const firebaseConfig = {
@@ -21,4 +21,6 @@ const app = initializeApp(firebaseConfig);
 // 필요한 경우 Firebase 서비스 추가
 export const db = getFirestore(app);
 export const auth = getAuth();
-export {collection, addDoc, signInWithPopup,initializeApp, getAnalytics, GoogleAuthProvider, onAuthStateChanged, signOut, getDoc, getDocs, doc, deleteDoc};
+export {collection, addDoc, signInWithPopup,initializeApp, 
+  getAnalytics, GoogleAuthProvider, onAuthStateChanged, 
+  setDoc,signOut, getDoc, getDocs, doc, deleteDoc};

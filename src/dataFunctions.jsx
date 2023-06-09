@@ -1,10 +1,12 @@
 import { db } from './firebase';
 import {collection, addDoc, doc, getDocs, deleteDoc} from './firebase';
+import {useRef} from 'react';
 
 //계획 생성 함수
 export const createPlan = async (planId) => {
   try{
     const title = document.querySelector('input[name="planTitle"]').value;
+    
     
     const planData = {
       planId: planId,
@@ -34,15 +36,19 @@ export const updateNode = async (collectionName, documentId, newData) => {
     }
 };
 
-//노드 생성 함수
+//계획 노드 생성 함수
 export const createNode = async () => {
   try {
-    const title = document.querySelector('input[name="title"]').value;
-    const content = document.querySelector('textarea[name="content"]').value;
+    const goaltitle = document.querySelector('input[name="goaltitle"]').value;
+    const goalAchieverate = document.querySelector('input[name="goalAchieverate"]').value;
+    const startday = document.querySelector('input[name="startday"]').value;
+    const endday = document.querySelector('input[name="endday"]').value;
 
     const nodeData = {
-      title: title,
-      content: content,
+      title: goaltitle,
+      rate: goalAchieverate,
+      start: startday,      
+      end: endday,
     };
 
     const docRef = await addDoc(collection(db, '노드'), nodeData);
@@ -108,4 +114,35 @@ export const printAllNodes = async (setNodes) => {
 export const clearAllNodes = (setNodes) => {
   setNodes([]);
 }
+
+// userCollection 생성
+export const createUserCollection = async (uid) => {
+  const userCollectionRef = db.collection(uid);
+  const newUser = {
+    UID : uid,
+  };
+  const docRef = await userCollectionRef.add(newUser);
+  console.log("User document added with ID: ", docRef.id);
+};
+
+// planCollection 생성
+export const createPlanCollection = async () => {
+  const planCollectionRef = db.collection("planCollection");
+  const newPlan = {
+    // 여기에 필요한 plan 데이터를 추가하십시오.
+  };
+  const docRef = await planCollectionRef.add(newPlan);
+  console.log("Plan document added with ID: ", docRef.id);
+};
+
+// nodeCollection 생성
+export const createNodeCollection = async () => {
+  const nodeCollectionRef = db.collection("nodeCollection");
+  const newNode = {
+    // 여기에 필요한 node 데이터를 추가하십시오.
+  };
+  const docRef = await nodeCollectionRef.add(newNode);
+  console.log("Node document added with ID: ", docRef.id);
+};
+
 

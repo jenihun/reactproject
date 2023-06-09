@@ -1,6 +1,7 @@
 import {React, useEffect, useState} from "react"; //React를 임포트한다. React컴포넌트를 정의하기 위해 필요한 도구
 import {createNode, printAllNodes, deleteNode, createPlan, clearAllNodes} from "./dataFunctions";  //노드 관리에 관련된 함수
-import {MainSpace, login} from "./Authentication";
+import {login, useUser} from "./Authentication";
+import { useNavigate } from "react-router-dom";
 
 /*
 return 문 안에는 단일 요소만 반환해야한다. 부모 요소에 포함된 여러 개의 자식 요소들로 구성
@@ -22,8 +23,20 @@ const FPS = () => {
     printAllNodes(setNodes);
   };
 
+  const navigte = useNavigate();
+
+
   return (
     <div>
+
+      <div>
+        <button onClick={() =>{navigte('/practice')}}>practice로 이동</button>
+        <button onClick={() =>{navigte('/mainPrint')}}>mainPage로 이동</button>
+      </div>
+
+
+
+
       <div>
         <h1>계획 생성</h1>
         <div>
@@ -59,8 +72,10 @@ const FPS = () => {
         </div>
 
         <div>
+        <div>
         <h1>로그인 기능</h1>
-        <button onClick={login}>로그인</button>
+        <button onClick={() => {login();}}>로그인</button>
+        </div>
         <button>main으로 이동</button>
         </div>
 
@@ -70,9 +85,6 @@ const FPS = () => {
         <button onClick={() => {clearAllNodes(setNodes)}}>노드 내용 clear</button>
         </div>
 
-
-    
-        
         <div style={{'padding' : '100px', 'border' : ' 5px solid black'}}>
         <div>
         <div style={{'height':'500px', 'backgroundColor':'cyan'}}>
