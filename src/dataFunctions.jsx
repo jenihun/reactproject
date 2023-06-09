@@ -1,6 +1,5 @@
 import { db } from './firebase';
-import {collection, addDoc, getDoc, doc, getDocs, deleteDoc} from './firebase';
-import { useState } from 'react';
+import {collection, addDoc, doc, getDocs, deleteDoc} from './firebase';
 
 //계획 생성 함수
 export const createPlan = async (planId) => {

@@ -1,4 +1,4 @@
-import {GoogleAuthProvider, auth, firebaseConfig,signInWithPopup, initializeApp, onAuthStateChanged,signOut} from './firebase';
+import {GoogleAuthProvider, auth, firebaseConfig,signInWithPopup, initializeApp,signOut} from './firebase';
 import { useNavigate } from 'react-router-dom';
 // import { google } from "googleapis";
 
