@@ -61,7 +61,7 @@ const FPS = () => {
         <div>
         <h1>로그인 기능</h1>
         <button onClick={login}>로그인</button>
-        <button onClick={MainSpace}>main으로 이동</button>
+        <button>main으로 이동</button>
         </div>
 
         <div>
@@ -73,7 +73,7 @@ const FPS = () => {
 
     
         
-        <div style={{'padding' : '100px', 'border' : ' 5px solid black'}}></div>
+        <div style={{'padding' : '100px', 'border' : ' 5px solid black'}}>
         <div>
         <div style={{'height':'500px', 'backgroundColor':'cyan'}}>
           <div style={{'border':'3px solid black', 'display':'flex', 'gap':'30px'}}>
@@ -88,6 +88,7 @@ const FPS = () => {
                 </div>
               </div>
             ))}
+          </div>
           </div>
           
         </div>
