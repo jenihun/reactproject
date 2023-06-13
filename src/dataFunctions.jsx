@@ -3,13 +3,12 @@ import {collection, addDoc, doc, getDocs, deleteDoc} from './firebase';
 import {useRef} from 'react';
 
 //계획 생성 함수
-export const createPlan = async (planId) => {
+export const createPlan = async () => {
+  
+  const Plans = collection(db, "계획");
   try{
     const title = document.querySelector('input[name="planTitle"]').value;
-    
-    
     const planData = {
-      planId: planId,
       title: title,
     };
 
@@ -21,7 +20,7 @@ export const createPlan = async (planId) => {
 };
 
 //계획, 노드 매핑 함수
-export const mapNodeToPlan = async (planId) => {
+export const mapNodeToPlan = async () => {
 
 }
 

@@ -1,0 +1,342 @@
+.body{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 1100px;
+}
+
+.nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 95%;
+  margin: 1%;
+  margin-left: 0px;
+  background-color: #dfdfdf;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 2;
+  transition: all 0.2s ease-in;
+}
+.tab{
+  margin: 3px;
+  position: absolute;
+  left: 170px;
+  font-Size: 1.5em;
+  color: rgba(81, 81, 81, 0.824);
+  z-index: 3;
+}
+.tab:hover{
+  color: rgba(124, 124, 124, 0.824);
+}
+.blue{
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: rgba(81, 81, 81, 0.824);
+  font-Size: 2em;
+  font-Family: sans-serif;
+  text-Transform: uppercase;
+}
+.blue::first-letter {
+  color: rgba(0, 68, 255, 0.422);
+  font-Size: 1.1em;
+}
+.mainhr{
+  margin-left: 20px;
+  width: 70%;
+  border-color: rgba(117, 117, 117, 0.279);
+}
+
+.banner{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.menu{
+  font-size: 20px;
+  border-top: 4px solid rgba(117, 117, 117, 0.279);
+  border-bottom: 4px solid rgba(117, 117, 117, 0.279);
+}
+
+.mainb{
+  margin-bottom: 30px;
+  margin-left: 20px;
+  font-Size: 1.2em;
+  font-Family: sans-serif;
+  color: rgba(81, 81, 81, 0.787);
+  cursor: pointer;
+}
+
+.mainb::first-letter {
+  color: rgba(0, 68, 255, 0.422);
+  font-Size: 1.1em;
+}
+
+.maintitle{
+  font-size: 50px;
+  font-Family: sans-serif;
+  color: rgba(81, 81, 81, 0.787);
+}
+
+.maintitle::first-letter {
+  color: rgba(0, 68, 255, 0.422);
+  font-Size: 1.1em;
+}
+
+.canv {
+  margin-left: 200px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.15s ease-in;
+}
+.changethis{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  position: relative;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: all 0.15s ease-in;
+  padding-bottom: 100px;
+}
+.show{
+  opacity: 1;
+}
+
+.Plan{
+  position: relative;
+  background-color: #42464b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  color: #eceef1;
+  font-size: 3em;
+  border-radius: 4px;
+  padding: 30px;
+  padding-top: 20px;
+  margin: 20px;
+  margin-bottom: 30%;
+  width: 70px;
+}
+
+.planset {
+  display: flex;
+}
+.print{
+  position: relative;
+  background-color: #42464b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  color: #eceef1;
+  font-size: 0.9em;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 10px;
+  cursor: pointer;
+}
+.pn {
+  margin: 10px;
+  position: absolute;
+  top:0px;
+  left: 0px;
+}
+
+.cont {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-wrap: row wrap;
+  z-index: 0;
+}
+
+.cont1 {
+  margin: 10px;
+  width: 100px;
+  height: 70px;
+  z-index: 1;
+  transition: all 0.1s ease-in;
+  position: static;
+}
+
+.goal-container { /*목표 컨테이너*/
+  font-family: Arial, sans-serif; /*Arial,sans-serif 폰트*/
+  color: #333; /*글자색 #333*/
+  background-color: #f2f2f2; /*배경색*/
+  padding: 20px; /*패딩 20px*/
+  border-radius: 4px; /*테두리 반경 4px : 가장자리를 원형으로 깍아준다*/
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);/*검은색 그림자 적용*/
+}
+
+.goal-container p { /*목표 컨테이너 내의 단락(p)*/
+  font-size: 16px; /*글자 크기 16px*/
+  margin-bottom: 10px; /*10px의 마진*/
+}
+
+.goal-container hr { /*목표 컨테이너 내의 수평선(hr)*/
+  border: none; /*테두리 없다*/
+  border-top: 1px solid #ccc;/*상단 테두리 1px #ccc*/
+  margin: 10px 0; /*상단,하단에 마진 설정 , 마진 10px*/
+}
+
+.goal-container button { /*재설정 버튼*/
+  background-color: #4caf50;/*배경색*/
+  color: #fff; /*글자색 흰색*/
+  padding: 10px 20px; /*상단/하단 패딩 10px 좌우 패딩 20px*/
+  border: none; /*테두리 없다*/
+  border-radius: 4px; /*테두리 반경 4px : 가장자리를 원형으로 깍아준다*/
+  cursor: pointer; /*커서 : 포인터 클릭 가능*/
+  transition: background-color 0.3s ease; /*배경색 전환 0.3초간 발생*/
+}
+
+.goal-container button:hover { /*클릭 시 "재설정" 버튼 배경색 변경*/
+  background-color: #45a049; /*배경색*/
+}
+
+.form-group { /*폼 그룹*/
+  margin-bottom: 20px; /*하위 요소들에 20px 마진 설정*/
+}
+
+.triangle {
+  position: absolute;
+  top: 20px;
+  left: 100%;
+  transform: translate(-100%, -100%);
+  width: 0;
+  height: 0;
+  border-top: 20px solid #b0b0b0;
+  border-left: 30px solid transparent;
+  border-radius: 5px;
+  opacity: 0.5;
+}
+.triangle:hover{
+  opacity: 1;
+}
+
+label { /*레이블 요소*/
+  display: block;/*블록 수준 요소 표시*/
+  font-weight: bold;/*볼드체 설정*/
+  margin-bottom: 5px;/*하위 요소들에 5px 마진 설정*/
+}
+
+input[type="text"],/*텍스트 타입의 입력 필드*/
+input[type="number"],/*숫자 타입의 입력 필드*/
+input[type="date"] {/*날짜 타입의 입력 필드*/
+  padding: 8px;/*패딩 8px*/
+  font-size: 14px;/*글자 크기 14px*/
+  border-radius: 4px;/*가장자리 테두리 깍아준다*/
+  border: 1px solid #ccc;/*테두리 1px*/
+  width: 200px;/*너비 200px*/
+}
+
+.submit-button { /*제출 버튼 활성화*/
+  padding: 10px 20px; /*상단/하단 패딩 10xp 좌우패딩 20px*/
+  font-size: 16px; /*글자 크기 16px*/
+  border-radius: 4px; /*가장 자리 깍아준다*/
+  border: none; /*테두리는 없다*/
+  background-color: #007bff; /*배경색 : 파랑색*/
+  color: #fff; /*글자색 : 흰색*/
+  cursor: pointer; /*커서 : 클릭 가능*/
+}
+
+.submit-button:disabled { /*비활성화된 상태*/
+  background-color: #ccc; /*배경색 흰색*/
+  cursor: not-allowed; /*커서 not-allowed*/
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 70px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 0 0 2.5px rgba(0, 0, 0, 0.3);
+}
+.add:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.clicked {
+  background-color: rgb(206, 206, 206);
+}
+.clicked .toolbar {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  width: 120px;
+  height: 25px;
+  overflow: visible;
+  opacity: 1;
+  transform: translate(0%, 115%);
+  background-color: #42464b;
+  border-radius: 5px;
+}
+.toolbar:not(.clicked .toolbar) {
+  top: 0px;
+  left: 0px;
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  margin-top: 0;
+  opacity: 0;
+}
+
+.hr {
+  top:0%;
+  height: 17px;
+  transform: translate(0%, -5px);
+}
+
+.exp{
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+  background-color: #42464b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  color: #eceef1;
+  font-size: 12px;
+  border-radius: 4px;
+}
+.exp.x{
+  color: #838383;
+}
+.exp:hover{
+  color: #838383;
+}
+
+
+.setnode{
+  z-index: 2;
+  display: flex;
+  position:absolute;
+  width: 200px;
+  height: 500px;
+  background-color: rgb(201, 255, 255);
+}
